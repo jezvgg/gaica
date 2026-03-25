@@ -25,7 +25,8 @@ def _run_stream(reader, writer) -> int:
             continue
         if message.get("type") != "tick":
             continue
-
+        
+        print(message)
         tick = int(message.get("tick", 0) or 0)
         me = message.get("you", {})
         enemy = message.get("enemy", {})
@@ -46,8 +47,9 @@ def _run_stream(reader, writer) -> int:
             me_pos = me.get("position", {})
             enemy_pos = enemy.get("position", {})
 
-            dx = float(enemy_pos.get("x", 0.0)) - float(me_pos.get("x", 0.0))
-            dy = float(enemy_pos.get("y", 0.0)) - float(me_pos.get("y", 0.0))
+            dx = enemy_pos[0] - me_pos[0]
+            dy = enemy_pos[1] - me_pos[1]
+            print(dx, dy)
             norm = (dx * dx + dy * dy) ** 0.5 or 1.0
 
             cmd = {
@@ -69,8 +71,8 @@ def _run_stream(reader, writer) -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Aggressive sample bot for GAICA local runner")
-    parser.add_argument("--host", default=None)
-    parser.add_argument("--port", type=int, default=None)
+    parser.add_argument("host", nargs="?", default=None)
+    parser.add_argument("port", nargs="?", type=int, default=None)
     args = parser.parse_args()
     print(args)
 
