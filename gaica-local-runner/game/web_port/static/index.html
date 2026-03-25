@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotline Web Port</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="layout">
+    <section class="stage-wrap">
+      <canvas id="game-canvas" width="1280" height="720"></canvas>
+    </section>
+    <aside class="panel">
+      <h1>Hotline Web Port</h1>
+      <p id="status">Инициализация...</p>
+      <p id="round"></p>
+      <p id="bots"></p>
+      <h2>TCP Bot Protocol</h2>
+      <pre>
+{ "type":"command",
+  "seq": 12,
+  "move": [1, 0],
+  "aim": [1, 0],
+  "shoot": false,
+  "kick": false,
+  "pickup": false,
+  "drop": false,
+  "throw": false }
+      </pre>
+      <p>Команды отправляются по JSON-lines на TCP порт сервера.</p>
+    </aside>
+  </main>
+  <script src="/game_renderer.js"></script>
+  <script src="/client.js"></script>
+</body>
+</html>

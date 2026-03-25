@@ -1,0 +1,70 @@
+"""Configuration values ported from the original Rust project."""
+
+from __future__ import annotations
+
+TICK_RATE = 30
+TICK_DT = 1.0 / TICK_RATE
+
+# Player mechanics
+PLAYER_RADIUS = 10.0
+PLAYER_SPEED = 255.0
+# Lightweight inertia for regular movement (small acceleration/deceleration delay).
+PLAYER_MOVE_ACCELERATION = 2400.0
+PLAYER_MOVE_DECELERATION = 2100.0
+PLAYER_KICK_COOLDOWN = 1.0
+KICK_RANGE = 28.0
+KICK_ARC_DOT_THRESHOLD = 0.45
+
+# Kick stun mechanics
+STUN_DURATION = 0.5
+STUN_SPEED = 350.0
+
+# Weapon interaction
+WEAPON_PICKUP_DISTANCE = 25.0
+WEAPON_PICKUP_COOLDOWN = 0.25
+EMPTY_PICKUP_REMOVE_SECONDS = 1.0
+
+# Throw/drop impulse approximations (ported from Rust constants)
+WEAPON_THROW_IMPULSE = 25000.0
+WEAPON_THROW_TORQUE = 1000.0
+WEAPON_DROP_IMPULSE = 10000.0
+WEAPON_DROP_TORQUE = 100.0
+WEAPON_PICKUP_LINEAR_DAMPING = 8.0
+
+# Bullets
+BULLET_SPEED = 500.0
+BULLET_RADIUS = 2.0
+BULLET_LIFETIME = 2.0
+
+# One-round configuration
+ROUND_TIME_LIMIT_SECONDS = 120.0
+ROUND_TICK_LIMIT = 1000
+
+# Level constants ported from Rust
+TILE_SIZE = 64.0
+WALL_COLLIDER_HALF_W = 2.0
+WALL_COLLIDER_HALF_H = 32.0
+DOOR_COLLIDER_HALF_W = 2.0
+DOOR_COLLIDER_HALF_H = TILE_SIZE / 3.5
+LETTERBOX_HALF_W = 16.0
+LETTERBOX_HALF_H = 4.0
+LETTERBOX_COOLDOWN_SECONDS = 1.5
+
+# Breakable thresholds
+BOX_BREAK_THRESHOLD = 1.0
+GLASS_BREAK_THRESHOLD = 0.1
+
+# Weapon stats
+REVOLVER_MAX_AMMO = 4
+REVOLVER_SHOT_COOLDOWN = 0.4
+REVOLVER_SPREAD_X = (-0.1, 0.1)
+REVOLVER_SPREAD_Y = (-0.1, 0.1)
+
+UZI_MAX_AMMO = 18
+UZI_SHOT_COOLDOWN = 0.1
+UZI_SPREAD_X = (-0.25, 0.25)
+UZI_SPREAD_Y = (-0.25, 0.25)
+
+# Breakability from weapon bullets
+REVOLVER_BREAKABILITY = 1.0
+UZI_BREAKABILITY = 0.25
